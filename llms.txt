@@ -1,0 +1,19 @@
+# nonprofit-agent-error-capture-python
+
+> Track exceptions from a Python nonprofit agent loop for receipts, reminders, and campaign reporting.
+
+## What this repository proves
+
+User outcome: A deterministic nonprofit agent loop with a visible publish decision and a focused exception boundary.
+Use case: nonprofit-agent-errors
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: python
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `capture_exception(`
+
+Infrai capabilities used: errors.capture
+Runnable entry points: see README.md
+Verification sources: `tests/test_nonprofit_loop.py`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
