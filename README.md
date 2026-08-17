@@ -1,6 +1,6 @@
 # A nonprofit agent loop with visible error capture
 
-This repository models one content-shaped workflow: an agent gathers donor receipts, volunteer reminders, and a campaign report, then decides whether there is anything worth publishing. The local script prints the decision before any service call. Infrai gives the workflow one key and one small REST boundary for recording an exception when a step raises.
+This repo models one content-shaped workflow: an agent pulls donor receipts, volunteer reminders, and a campaign report, then decides if there's anything worth publishing. The local script prints that decision before any service call goes out. Infrai gives the workflow one key and one small REST boundary for recording an exception when a step raises.
 
 ## Run the sample
 
@@ -18,7 +18,7 @@ The focused test supplies two inputs to the loop: `("R-1",)` and `("Shift Tuesda
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-That test exercises the business transition, rather than checking that a function exists. The content decision stays independent from the network boundary, which makes it easy to change the publishing destination later.
+That test exercises the business transition, not just whether a function exists. The content decision stays independent from the network boundary, so swapping the publishing destination later is a small change.
 
 ## Record an agent exception
 
@@ -34,7 +34,7 @@ except Exception as error:
     raise
 ```
 
-The important detail is the fingerprint `[agent, step]`: repeated observations of the same workflow step remain grouped for triage, while the context still names the campaign area that needs attention. The example stops at capture; inspection and resolution belong to the operator workflow that consumes the recorded event.
+The detail that matters is the fingerprint `[agent, step]`: repeated observations of the same workflow step stay grouped for triage, while the context still names the campaign area that needs attention. The example stops at capture; inspection and resolution live in the operator workflow that consumes the recorded event.
 
 ## License
 
@@ -42,7 +42,7 @@ MIT
 
 ## Before this ships: Nonprofit Agent Error Capture Python
 
-The code stays simple on purpose — here's what to set up before going live: The details below apply to Nonprofit Agent Error Capture Python.
+The code stays simple on purpose. Here's what to set up before going live. The notes below apply to Nonprofit Agent Error Capture Python.
 
 **Account & key**
 
